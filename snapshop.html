@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="en">
+  <head>
+   
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+      Amazon demo
+    </title>
+   
+    <link rel="stylesheet" href="style.css">
+  
+  <style>
+    *{
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    body{
+      background-color: #dadada;
+    }
+    header{
+      height: 100%;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     background-color:rgb(8, 57, 117);
+     padding: 10px 20px;
+     color: #fff;
+    }
+    .location{
+      display: flex;
+      align-items: end;
+    }
+
+    .search-bar{
+      flex: 1;
+      display: flex;
+      align-items: center;
+      background-color: #fff;
+      color: gray;
+      max-width: 700px;
+      border-radius: 4px;
+      margin-left: 15px;
+    }
+    .search-gategory{
+      display: flex;
+      align-items:center ;
+      padding: 10px 20px;
+      gap: 5px;
+      background-color: #e5e5e5;
+      border-radius: 4px 0 0 4px;
+
+    }
+    .search-input{
+      border:none;
+      outline: none;
+      padding-left: 20px; 
+      width: 100%;
+    }
+    .search-icon{
+      max-width: 40px;
+      background-color: #ffd64f;
+      padding:8px;
+      border-radius: 0 4px 4px 0;
+    
+    }
+    .contry{
+      display: flex;
+      align-items: center;
+      font-weight: 600;
+      gap: 2px;
+      margin-left: 15px;
+    }
+    .text{
+      margin-left: 15PX;
+
+    }
+    .text p{
+      font-size: 10px;
+    }
+    .text h1{
+      font-size: 14px;
+    }
+    .cart{
+      display: flex;
+      align-items: center;
+      margin: 0 15px;
+    }
+    nav{
+      display: flex;
+      text-align: center;
+      gap: 20px;
+      padding: 8px 20px;
+      background-color: #233f3e;
+      color:#fff;
+      font-size: 15px;
+      justify-content: space-around;
+    }
+   
+    .menu{
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-weight: 500;
+    }
+    .nav-bottom{
+      background-color: #f7f3f3;
+      display: flex;
+      padding: 8px 20px;
+      color:black;
+      font-size: 15px;
+      height: 10%;
+      box-shadow: 10px;
+      flex: 5;
+    }
+    .search-result{
+      flex:3;
+      width: 500px;
+    }
+    .sort-by{
+      flex: 2;
+      text-align: right;
+    }
+    .container{
+      display: flex;
+      flex-direction: row;
+      height: 1000px;
+    }
+    .side_bar{
+      display: flex;
+      width: 250px;
+      flex-direction: column;
+      padding:20px;
+      justify-content: space-between;
+      background-color: white;
+    }
+   
+    .content{
+      display: flex;
+      flex: 1;
+      background-color: white;
+      flex-direction: column;
+      padding-top: 30px;
+      padding: 20px;
+  
+    }
+    .heading{
+      display: flex;
+      flex-direction: row;
+      height: 8%;
+      justify-content: space-between;
+      padding: 10px;
+    }
+    .heading1{
+      flex: 1;
+      border-right:1px solid rgb(173, 169, 169);
+      align-items: flex-end;
+    }
+    .heading1 h1{
+      color: rgb(2, 2, 88) ;
+      font-size: 40px; 
+      font-weight: bold;
+      font-style: italic;
+    }
+    .heading2{
+      flex:7;
+      align-items: self-start;
+      padding-left: 10px;
+    }
+    .banner{
+      display: flex;
+      height: 300px;
+      background-color: rgb(113, 138, 136);
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-around;
+    }
+    .banner1{
+      width: 450px;
+      height: 280px;
+      background-image: url(assets/bag\ banner.webp);
+      background-size: cover;
+    }
+    .banner2{
+      display: flex;
+      height: 270px;
+      width:200px;
+      flex-direction: column;
+      align-items: center;
+      border: 1px solid rgb(238, 236, 236);
+      background-color: white;
+      border-radius: 5px;
+    }  
+    .img{
+      width: 200px;
+      height: 200px;
+    }
+    .banner2>h1{
+      font-size: 20px;
+    }
+   .product-container{
+      display: flex;
+      height: auto;
+      flex-direction: column;
+    }
+    .result{
+      height: 80px;
+      align-content: center;
+
+    }
+    #productListContainer{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      gap: .2rem;
+      background-color: white;
+      text-align: center;
+
+
+    }
+    .product h1 {
+      font-size: 15px;
+    }
+    @media screen and (max-width: 800px) {
+      .side_bar,.location,.contry,.text,.banner2,.search-result,nav{
+       display: none;
+      }
+      header{
+        background-color: #2e2c2c;
+      }
+      .galary{
+        flex-direction: column;
+      }
+      .container{
+        height: 3200px;
+      }
+      .heading{
+        height: 7%;
+      }
+      .heading1 h1{
+        font-size:20px ;
+      }
+      .heading2{
+        font-size:10px ;
+      }
+    }
+     
+  </style>
+ 
+  </head>
+
+  <body>
+   
+<header>
+        <img src="assets/snapnew.png" width="100px" alt="">
+      <div class="location"> 
+        <img src="assets/location.png" height="20px" alt="" >
+        <div>
+          <p style="color: rgb(199, 197, 197);">Deliver to </p>
+         <h1 style="font-size: 15px;">Kozhikode</h1>
+        </div>
+      </div>
+      <div class="search-bar">
+        <div class="search-gategory">
+          <p>All</p>
+          <img src="assets/dropdwn.png" height="8px" alt="">
+          </div>
+         <input type="text" class=" search-input" placeholder="Bags">
+         <img src="assets/searchicon.png"class="search-icon" alt="">
+      </div>
+      <div class="contry">
+        <img src="assets/flag.png" width=25px alt="">
+        <p>IN</p>
+        <img src="assets/dropdwn.png" width="8px" alt="">
+      </div>
+      <div class="text">
+        <p>Hello, Sign in</p>
+        <h1>Account list <img src="assets/dropdwn.png" width="8px" alt =""></h1>
+      </div>
+      <div class="text">
+        <p>Return</p>
+        <h1>Orders</h1>
+      </div>
+      <div class="cart">
+        <img src="assets/carticon.png" width="35px" alt="">
+        <h4>Cart</h4>
+      </div>
+    </header>
+      
+    <nav>
+        <div class="menu">
+          <img src="assets/menuicon.png" width="20px" alt="">
+          <p>All</p>
+        </div>
+          <p>Fresh Meat</p>
+          <p>Cartix MiniTv</p>
+          <p>sell</p>
+          <p> best seller</p>
+          <p>Todays deal</p>
+          <p>mobail</p>
+          <p>customer service</p>
+          <p>prime</p>
+          <p>Electronics</p>
+          <p>Fashion</p>
+          <p>New Releases</p>
+          <p>Home&Kichen</p>
+          <p>Cartix Pay</p>
+
+    </nav>
+    <div class="nav-bottom">
+      <div class="search-result">
+      <span>1-10 of over 40 results for</span>
+      <span style="color: rgb(148, 2, 2); font-weight: bold;"> "bags"</span>
+    </div>
+      <div class="sort-by">
+        <label class="form-label">Sort by</label>
+        <select  aria-label="Default select example">
+          <option selected>featured</option>
+          <option value="1">Price:Low to high</option>
+          <option value="2">Price:high to Low</option>
+          <option value="3">Average customer review</option>
+        </select>
+  
+      </div>
+    </div>
+  <div class="container">
+    <div class="side_bar">
+      <div>
+        <h4>Cetegory</h4>
+        <p>Portable Computer Bags</p>
+        <p>Laptop Backpacks</p>
+        <p>Casual Daypacks</p>
+        <p>Travel Duffels</p>
+      </div>
+      <div>
+        <h4>Brand</h4>
+        <input type="checkbox" />
+        <label>skybags</label>
+        <br>
+        <input type="checkbox"/>
+        <label>American Tourister</label>
+        <br>
+        <input type="checkbox"/>
+        <label>Wildcraft</label>
+        <br>
+        <input type="checkbox"/>
+        <label>TommyHilfiger</label>
+        <br>
+        <input type="checkbox"/>
+        <label>Impuls</label>
+      </div>
+      <div>
+        <h4>Deal&Discount</h4>
+        <p>All Discounts</p>
+        <p>Today's Deals</p>
+      </div>
+      <div>
+        <h4>Recommended Use</h4>
+        <input type="checkbox"/>
+        <label>leisure</label>
+        <br>
+        <input type="checkbox"/>
+        <label>School</label>
+        <br>
+        <input type="checkbox"/>
+        <label>Sports</label>
+        <br>
+        <input type="checkbox"/>
+        <label>Travel</label>
+        <br>
+        <input type="checkbox"/>
+        <label>Work</label>
+      </div>
+      <div>
+      <h4>  Backpack Disign</h4>
+      <input type="checkbox"/>
+        <label>Daypack Bachpack</label>
+        <br>
+        <input type="checkbox"/>
+        <label>Framed Backpack</label>
+        <br>
+        <input type="checkbox"/>
+        <label>Laptop Backpack</label>
+      </div>
+      <div>
+        <h4>School Type</h4>
+        <input type="checkbox"/>
+        <label>Preschool</label>
+        <br>
+        <input type="checkbox"/>
+        <label>Elementory School</label>
+        <br>
+        <input type="checkbox"/>
+        <label>Middle School</label>
+        <br>
+        <input type="checkbox"/>
+        <label>High School</label>
+      </div>
+      <div>
+        <h4>Pattern</h4>
+        <input type="checkbox"/>
+        <label>Animal Print</label>
+        <br>
+        <input type="checkbox"/>
+        <label>Cartoon</label>
+        <br>
+        <input type="checkbox"/>
+        <label>Floral</label>
+        <br>
+        <input type="checkbox"/>
+        <label>Fruits</label>
+        <br>
+      </div>
+      <div>
+        <h4>Lining Discription</h4>
+        <input type="checkbox"/>
+        <label>Cotton</label>
+        <br>
+        <input type="checkbox"/>
+        <label>Leather</label>
+        <br>
+        <input type="checkbox"/>
+        <label>Polister</label>
+        <br>
+        <input type="checkbox"/>
+        <label>Nylon</label>
+        <br>
+      </div>
+      <div>
+        <h4>Sport Type</h4>
+        <input type="checkbox"/>
+        <label>Airsoft</label>
+        <br>
+        <input type="checkbox"/>
+        <label>Alpine Sking</label>
+        <br>
+        <input type="checkbox"/>
+        <label>Badminton</label>
+        <br>
+        <input type="checkbox"/>
+        <label>Baseball</label>
+        <br>
+        <input type="checkbox"/>
+        <label>Auto Racing</label>
+        <br>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="heading">
+        <div class="heading1">
+        <h1>Safari</h1>
+        </div>
+        <div class="heading2"> 
+        <h2>Backpack for all your Travel needs</h2>
+        <p style="color: rgba(35, 35, 105, 0.589);">Shop safari-Marketplace</p>
+        </div>
+      </div>
+
+      <div class="banner">
+       <div class="banner1"></div>
+       <div class="banner2">
+        <img src="assets/bag1.jpg" width="200px" height="200px" alt="">
+        <h1 style="font-size: 20px;">safari backpack</h1>
+        <p>15Liter laptop backpack</p>
+       </div>
+       <div class="banner2">
+        <img src="assets/bag2.jpg" width="200px" height="200px" alt="">
+        <h1>abc backpack</h1>
+        <p>10L unisex Backpack</p>
+       </div> 
+       <div class="banner2">
+        <img src="assets/bag3.jpg" width="200px" height="200px" alt="">
+        <h1>Women Handbag</h1>
+        <p>Red colour lether bag</p>
+       </div> 
+      </div>
+      <div class="product-container">
+        <div class="result">
+          <h1 style="font-size: 20px;">Result</h1>
+          <p>Price and other details may vary based on product size and colour.</p>
+        </div>
+        <div id="productListContainer">
+        <script>
+          var products = [
+             {
+                 id:1,
+                 photo:'assets/bag3.jpg' ,
+                 name:'Elegent Women Bag',
+                 discription:'Elegent Women Hand bag'
+                 
+             },
+             {
+                 id:2,
+                 photo:'assets/bag7.jpg',
+                 name:'Trolly Bag',
+                 discription:'15L Luggage Bag'
+             },
+             {
+                 id:3,
+                 photo:'assets/bag5.jpg',
+                 name:'School bag',
+                 discription:'FloralPrint School Bag'
+                 
+                
+             },
+             {
+                id:4,
+                photo:'assets/bag6.jpg',
+                name:'Backpack',
+                discription:'Leather backpack for women'
+                
+             },
+             {
+                id:5,
+                photo:'assets/bag7.jpg',
+                name:'Backpack',
+                discription:'Leather backpack for women'
+                
+             },
+             {
+                id:6,
+                photo:'assets/bag8.jpg',
+                name:'Backpack',
+                discription:'Leather backpack for women'
+                
+             },
+             {
+                id:7,
+                photo:'assets/bag9.jpg',
+                name:'Backpack',
+                discription:'Leather backpack for women'
+                
+             },
+             {
+                id:8,
+                photo:'assets/bag10.jpg',
+                name:'Backpack',
+                discription:'Leather backpack for women'
+                
+             },
+            
+            
+             ];
+             var productListE1= document.getElementById('productListContainer');
+             var productCards= '';
+             for(var p of products){
+                 productCards=productCards+ '<div>'+' <img height="240px" src="' + p.photo +'"/> '+'<h2 font-size: 15px>' + p.name + '</h2>' + '<p>' + p.discription + '</p> </div>'
+             }
+             productListE1.innerHTML= productCards;
+     </script>
+     </div>
+               
+        </div>
+      </div>
+    </div>
+  </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>
